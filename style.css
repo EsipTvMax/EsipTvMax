@@ -51,3 +51,11 @@ nav a {
   font-size: 22px;
   color: red;
 }
+button {
+  background: red;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
