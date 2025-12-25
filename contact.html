@@ -9,16 +9,44 @@
 
 <header>
   <h1>EsipTvMax</h1>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="boutique.html">Boutique</a>
+    <a href="faq.html">FAQ</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 </header>
 
-<h2 class="title">Commander / Contact</h2>
+<h2 class="title">Nous contacter</h2>
 
-<p>Contactez-nous pour commander :</p>
+<div class="contact-container">
 
-<p>
-📧 Email : <strong>contact@esiptvmax.com</strong><br>
-💬 WhatsApp : <strong>+33XXXXXXXXX</strong>
-</p>
+  <!-- FORMULAIRE EMAIL -->
+  <div class="contact-box">
+    <h3>📧 Contact par email</h3>
+
+    <form action="mailto:esiptvmaxoff@gmail.com" method="POST" enctype="text/plain">
+      <input type="text" name="Nom" placeholder="Votre nom" required>
+      <input type="email" name="Email" placeholder="Votre email" required>
+      <textarea name="Message" placeholder="Votre message" required></textarea>
+      <button type="submit">Envoyer par email</button>
+    </form>
+  </div>
+
+  <!-- WHATSAPP -->
+  <div class="contact-box whatsapp-box">
+    <h3>💬 Contact WhatsApp</h3>
+    <p>Réponse rapide – chat direct</p>
+
+    <a 
+      href="https://wa.me/33768952586?text=Bonjour%20je%20souhaite%20des%20informations%20sur%20EsipTvMax"
+      target="_blank"
+      class="whatsapp-btn">
+      Discuter sur WhatsApp
+    </a>
+  </div>
+
+</div>
 
 </body>
 </html>
