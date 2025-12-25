@@ -59,3 +59,35 @@ button {
   cursor: pointer;
   border-radius: 5px;
 }
+.cart-box {
+  max-width: 400px;
+  margin: 40px auto;
+  background: #111;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #000;
+  text-align: center;
+}
+
+.cart-box p {
+  margin: 8px 0;
+}
+
+.cart-box button {
+  margin-left: 10px;
+}
+
+.total {
+  font-size: 20px;
+  margin: 15px 0;
+  color: #ff4d4d;
+}
+
+button {
+  background: red;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
