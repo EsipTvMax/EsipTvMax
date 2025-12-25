@@ -91,3 +91,42 @@ button {
   border-radius: 5px;
   cursor: pointer;
 }
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  color: white;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #aaa;
+}
+
+.contact-form textarea {
+  min-height: 140px;
+  resize: none;
+}
+
+.contact-form button {
+  background: linear-gradient(135deg, #ff0000, #b30000);
+  border: none;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.contact-form button:hover {
+  opacity: 0.9;
+}
