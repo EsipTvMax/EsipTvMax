@@ -25,12 +25,18 @@
   <div class="contact-box">
     <h3>📧 Contact par email</h3>
 
-    <form action="mailto:esiptvmaxoff@gmail.com" method="POST" enctype="text/plain">
-      <input type="text" name="Nom" placeholder="Votre nom" required>
-      <input type="email" name="Email" placeholder="Votre email" required>
-      <textarea name="Message" placeholder="Votre message" required></textarea>
-      <button type="submit">Envoyer par email</button>
-    </form>
+   <form 
+  action="https://formspree.io/f/xvzpeqpj" 
+  method="POST"
+  class="contact-form">
+
+  <input type="text" name="name" placeholder="Votre nom" required>
+  <input type="email" name="email" placeholder="Votre adresse email" required>
+  <textarea name="message" placeholder="Votre message" required></textarea>
+
+  <button type="submit">Envoyer le message</button>
+</form>
+
   </div>
 
   <!-- WHATSAPP -->
