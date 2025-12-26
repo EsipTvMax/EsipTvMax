@@ -1,8 +1,8 @@
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
   background: #0b0b0b;
   color: white;
+  font-family: Arial, sans-serif;
+  margin: 0;
 }
 
 header {
@@ -18,115 +18,65 @@ nav a {
   text-decoration: none;
 }
 
-.hero {
+.title {
   text-align: center;
-  padding: 80px 20px;
-  background: linear-gradient(135deg, #ff0000, #000);
-}
-
-.btn {
-  background: red;
-  color: white;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 5px;
+  margin: 30px 0;
 }
 
 .products {
   display: flex;
-  justify-content: center;
   gap: 20px;
-  padding: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .product {
   background: #1a1a1a;
   padding: 20px;
-  width: 200px;
-  text-align: center;
   border-radius: 10px;
+  width: 220px;
+  text-align: center;
 }
 
 .price {
-  font-size: 22px;
   color: red;
+  font-size: 20px;
 }
-button {
+
+button, .btn {
   background: red;
   color: white;
   border: none;
   padding: 10px;
-  cursor: pointer;
   border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
 }
+
 .cart-box {
-  max-width: 400px;
+  max-width: 420px;
   margin: 40px auto;
   background: #111;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 15px #000;
   text-align: center;
 }
 
-.cart-box p {
-  margin: 8px 0;
+.promo-box {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
 }
 
-.cart-box button {
-  margin-left: 10px;
+.promo-box input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
 }
 
 .total {
-  font-size: 20px;
-  margin: 15px 0;
+  font-size: 22px;
   color: #ff4d4d;
-}
-
-button {
-  background: red;
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.contact-form input,
-.contact-form textarea {
-  background: #1a1a1a;
-  border: 1px solid #333;
-  color: white;
-  padding: 14px;
-  border-radius: 8px;
-  font-size: 15px;
-}
-
-.contact-form input::placeholder,
-.contact-form textarea::placeholder {
-  color: #aaa;
-}
-
-.contact-form textarea {
-  min-height: 140px;
-  resize: none;
-}
-
-.contact-form button {
-  background: linear-gradient(135deg, #ff0000, #b30000);
-  border: none;
-  padding: 14px;
-  font-size: 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.contact-form button:hover {
-  opacity: 0.9;
+  margin: 15px 0;
 }
