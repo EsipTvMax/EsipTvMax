@@ -1,55 +1,95 @@
-let cart = [];
-let total = 0;
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let discount = 0;
 
+// Sauvegarde
+function saveCart() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+// Ajouter au panier
 function addToCart(name, price) {
   cart.push({ name, price });
-  total += price;
-  updateCart();
+  saveCart();
+  alert("Produit ajouté au panier");
 }
 
+// Supprimer un produit
 function removeItem(index) {
-  total -= cart[index].price;
   cart.splice(index, 1);
-  updateCart();
+  saveCart();
+  displayCart();
 }
 
-function updateCart() {
+// Code promo
+function applyPromo() {
+  const code = document.getElementById("promo").value.toUpperCase();
+
+  if (code === "ESIP10") {
+    discount = 0.10;
+    alert("Code promo appliqué : -10%");
+  } else {
+    discount = 0;
+    alert("Code promo invalide");
+  }
+  displayCart();
+}
+
+// Calcul total
+function getTotal() {
+  let total = cart.reduce((sum, item) => sum + item.price, 0);
+  total = total - total * discount;
+  return total.toFixed(2);
+}
+
+// Affichage panier
+function displayCart() {
   const cartDiv = document.getElementById("cart");
+  const totalSpan = document.getElementById("total");
+
+  if (!cartDiv) return;
+
   cartDiv.innerHTML = "";
+
+  if (cart.length === 0) {
+    cartDiv.innerHTML = "<p>Votre panier est vide</p>";
+    totalSpan.innerText = "0";
+    return;
+  }
 
   cart.forEach((item, index) => {
     cartDiv.innerHTML += `
-      <p>${item.name} - ${item.price} €
-      <button onclick="removeItem(${index})">✖</button></p>
+      <p>
+        ${item.name} - ${item.price} €
+        <button onclick="removeItem(${index})">❌</button>
+      </p>
     `;
   });
 
-  document.getElementById("total").innerText = total.toFixed(2);
+  totalSpan.innerText = getTotal();
 }
 
-paypal.Buttons({
-  style: {
-    layout: 'vertical',
-    color: 'gold',
-    shape: 'rect',
-    label: 'paypal'
-  },
-  createOrder: function (data, actions) {
-    if (total === 0) {
-      alert("Votre panier est vide");
-      return;
+displayCart();
+
+// PAYPAL
+if (document.getElementById("paypal-button-container")) {
+  paypal.Buttons({
+    createOrder: function (data, actions) {
+      if (cart.length === 0) {
+        alert("Votre panier est vide");
+        return;
+      }
+      return actions.order.create({
+        purchase_units: [{
+          amount: { value: getTotal() }
+        }]
+      });
+    },
+    onApprove: function (data, actions) {
+      return actions.order.capture().then(function () {
+        alert("Paiement confirmé. Merci !");
+        localStorage.removeItem("cart");
+        window.location.href = "index.html";
+      });
     }
-    return actions.order.create({
-      purchase_units: [{
-        amount: {
-          value: total.toString()
-        }
-      }]
-    });
-  },
-  onApprove: function (data, actions) {
-    return actions.order.capture().then(function (details) {
-      alert("Paiement confirmé. Merci " + details.payer.name.given_name);
-    });
-  }
-}).render('#paypal-button-container');
+  }).render("#paypal-button-container");
+}
