@@ -12,7 +12,7 @@
   <nav>
     <a href="index.html">Accueil</a>
     <a href="boutique.html">Boutique</a>
-    <a href="faq.html">FAQ</a>
+    <a href="panier.html">Panier</a>
     <a href="contact.html">Contact</a>
   </nav>
 </header>
@@ -21,38 +21,31 @@
 
 <div class="products">
   <div class="product">
-    <h3>1 Mois</h3>
+    <h3>Abonnement 1 Mois</h3>
     <p>HD / 4K</p>
     <p class="price">15 €</p>
     <button onclick="addToCart('Abonnement 1 Mois', 15)">Ajouter au panier</button>
   </div>
 
   <div class="product">
-    <h3>6 Mois</h3>
+    <h3>Abonnement 6 Mois</h3>
     <p>HD / 4K</p>
     <p class="price">45 €</p>
     <button onclick="addToCart('Abonnement 6 Mois', 45)">Ajouter au panier</button>
   </div>
 
   <div class="product">
-    <h3>12 Mois</h3>
+    <h3>Abonnement 12 Mois</h3>
     <p>HD / 4K</p>
     <p class="price">70 €</p>
     <button onclick="addToCart('Abonnement 12 Mois', 70)">Ajouter au panier</button>
   </div>
 </div>
 
-<div class="cart-box">
-  <h2>🛒 Panier</h2>
-  <div id="cart"></div>
-  <p class="total">Total : <span id="total">0</span> €</p>
-
-  <div id="paypal-button-container"></div>
+<div style="text-align:center; margin:40px;">
+  <a href="panier.html" class="btn">🛒 Voir le panier</a>
 </div>
 
-<!-- PayPal SDK -->
-<script src="https://www.paypal.com/sdk/js?client-id=AUYjL6Fif1JsT2c8l3-hxtWQO1mAFlLh5EZ_aZEUOD6yEooiW_9k4jRwq1yc_IuhQuiF3ph83xtlpQuQ&currency=EUR"></script>
 <script src="script.js"></script>
-
 </body>
 </html>
