@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Boutique - EsipTvMax</title>
+  <title>Abonnements – EsipTvMax</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,38 +11,56 @@
   <h1>EsipTvMax</h1>
   <nav>
     <a href="index.html">Accueil</a>
-    <a href="boutique.html">Boutique</a>
+    <a href="boutique.html">Abonnements</a>
     <a href="panier.html">Panier</a>
-    <a href="contact.html">Contact</a>
   </nav>
 </header>
 
-<h2 class="title">Nos abonnements IPTV</h2>
+<h2 class="title">Abonnements application Android EsipTvMax</h2>
 
 <div class="products">
   <div class="product">
-    <h3>Abonnement 1 Mois</h3>
-    <p>HD / 4K</p>
-    <p class="price">15 €</p>
-    <button onclick="addToCart('Abonnement 1 Mois', 15)">Ajouter au panier</button>
+    <h3>Test 24h</h3>
+    <p class="price">2 €</p>
+    <button onclick="addToCart('Test 24h – Android', 2)">Ajouter</button>
   </div>
 
   <div class="product">
-    <h3>Abonnement 6 Mois</h3>
-    <p>HD / 4K</p>
+    <h3>6 mois</h3>
+    <p class="price">35 €</p>
+    <button onclick="addToCart('Abonnement 6 mois – Android', 35)">Ajouter</button>
+  </div>
+
+  <div class="product">
+    <h3>1 an</h3>
     <p class="price">45 €</p>
-    <button onclick="addToCart('Abonnement 6 Mois', 45)">Ajouter au panier</button>
+    <button onclick="addToCart('Abonnement 1 an – Android', 45)">Ajouter</button>
   </div>
 
   <div class="product">
-    <h3>Abonnement 12 Mois</h3>
-    <p>HD / 4K</p>
-    <p class="price">70 €</p>
-    <button onclick="addToCart('Abonnement 12 Mois', 70)">Ajouter au panier</button>
+    <h3>Pack 3 codes (1 an)</h3>
+    <p class="price">120 €</p>
+    <button onclick="addToCart('Pack 3 codes – 1 an', 120)">Ajouter</button>
+  </div>
+
+  <div class="product">
+    <h3>Pack 10 codes (1 an)</h3>
+    <p class="price">310 €</p>
+    <button onclick="addToCart('Pack 10 codes – 1 an', 310)">Ajouter</button>
   </div>
 </div>
 
-<div style="text-align:center; margin:40px;">
+<h2 class="title">Abonnement autres supports</h2>
+
+<div class="products">
+  <div class="product">
+    <h3>1 an – Tous supports</h3>
+    <p class="price">45 €</p>
+    <button onclick="addToCart('Abonnement 1 an – Tous supports', 45)">Ajouter</button>
+  </div>
+</div>
+
+<div style="text-align:center;margin:40px;">
   <a href="panier.html" class="btn">🛒 Voir le panier</a>
 </div>
 
