@@ -175,3 +175,23 @@ button, .btn {
     font-size: 24px;
   }
 }
+.hero-full {
+  display: block !important;
+  text-align: center;
+}
+
+.hero-full img {
+  display: block !important;
+  margin: 0 auto;
+}
+
+.hero-logo {
+  width: 900px !important;
+  max-width: 100% !important;
+  margin-bottom: 10px;
+}
+
+.hero-banner {
+  width: 900px !important;
+  max-width: 100% !important;
+}
