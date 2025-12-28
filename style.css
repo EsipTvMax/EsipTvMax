@@ -268,3 +268,41 @@ button, .btn {
   height: auto;
   display: block;
 }
+/* ===== BANNIÈRE SIMPLE EN HAUT ===== */
+
+.hero-simple {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+/* IMAGE BANNIÈRE */
+.hero-banner-top {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* TEXTE PAR-DESSUS */
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 800px;
+  padding: 20px;
+  background: rgba(0,0,0,0.5);
+  border-radius: 12px;
+}
+
+/* BOUTON */
+.hero-btn {
+  display: inline-block;
+  margin-top: 20px;
+  background: #e50914;
+  color: white;
+  padding: 12px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+}
