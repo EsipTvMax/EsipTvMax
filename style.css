@@ -312,6 +312,8 @@ button, .btn {
 
 /* TEXTE SOUS LA BANNIÈRE */
 .hero-text-only {
+  max-width: 1200px;     /* largeur propre */
+  margin: 0 auto;        /* CENTRAGE HORIZONTAL */
   text-align: center;
   padding: 60px 20px;
   color: white;
