@@ -133,23 +133,27 @@ button, .btn {
   background: #111;
 }
 .hero-full {
-  background: #000;
-  padding: 40px 20px 60px;
+  display: flex;
+  flex-direction: column; /* IMPORTANT : empile verticalement */
+  align-items: center;
   text-align: center;
 }
 
+/* LOGO */
 .hero-logo {
-  max-width: 280px;
   width: 100%;
-  margin-bottom: 25px;
+  max-width: 900px; /* même largeur que la bannière */
+  height: auto;
+  margin-bottom: 10px;
 }
 
+/* BANNIÈRE */
 .hero-banner {
-  max-width: 900px;
   width: 100%;
-  border-radius: 12px;
-  margin-bottom: 30px;
+  max-width: 900px; /* même largeur */
+  height: auto;
 }
+
 
 .hero-text h2 {
   font-size: 32px;
