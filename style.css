@@ -301,3 +301,18 @@ button, .btn {
   text-decoration: none;
   font-weight: bold;
 }
+/* ===== BANNIÈRE PLEINE LARGEUR ===== */
+
+.banner-full {
+  width: 100vw;        /* largeur écran */
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* TEXTE SOUS LA BANNIÈRE */
+.hero-text-only {
+  text-align: center;
+  padding: 60px 20px;
+  color: white;
+}
