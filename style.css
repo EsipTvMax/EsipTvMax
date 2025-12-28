@@ -195,3 +195,70 @@ button, .btn {
   width: 900px !important;
   max-width: 100% !important;
 }
+/* ===== BANNIÈRE PRO ===== */
+
+.hero-pro {
+  min-height: 80vh;
+  background: linear-gradient(
+      rgba(0,0,0,0.75),
+      rgba(0,0,0,0.9)
+    ),
+    url("images/banner-content.jpg") center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  padding: 40px 20px;
+}
+
+.hero-content {
+  max-width: 800px;
+  animation: fadeUp 1.2s ease-out;
+}
+
+.hero-logo {
+  width: 280px;
+  max-width: 90%;
+  margin-bottom: 20px;
+}
+
+.hero-pro h2 {
+  font-size: 2.4rem;
+  margin-bottom: 15px;
+}
+
+.hero-pro p {
+  font-size: 1.1rem;
+  opacity: 0.85;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.hero-btn {
+  display: inline-block;
+  background: #e50914;
+  color: #fff;
+  padding: 14px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(229, 9, 20, 0.4);
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
