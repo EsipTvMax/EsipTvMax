@@ -262,3 +262,9 @@ button, .btn {
     transform: translateY(0);
   }
 }
+.hero-banner {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
