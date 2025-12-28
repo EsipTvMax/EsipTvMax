@@ -304,9 +304,9 @@ button, .btn {
 /* ===== BANNIÈRE PLEINE LARGEUR ===== */
 
 .banner-full {
-  width: 100vw;        /* largeur écran */
-  max-width: 100%;
-  height: auto;
+  width: 100vw;
+  height: 420px;          /* ← RÉDUIT LA HAUTEUR ICI */
+  object-fit: cover;     /* recadre sans déformer */
   display: block;
 }
 
