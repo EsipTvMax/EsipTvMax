@@ -318,3 +318,50 @@ button, .btn {
   padding: 60px 20px;
   color: white;
 }
+.download {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.download h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.download p {
+  color: #ccc;
+  margin-bottom: 40px;
+}
+
+.download-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 30px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.download-card {
+  background: #111;
+  border-radius: 12px;
+  padding: 30px;
+  text-decoration: none;
+  color: white;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.download-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(255,0,0,0.3);
+}
+
+.download-card img {
+  width: 80px;
+  margin-bottom: 15px;
+}
+
+.download-card span {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+}
