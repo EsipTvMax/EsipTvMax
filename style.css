@@ -607,3 +607,27 @@ button, .btn {
   padding: 8px 14px;
   border-radius: 6px;
 }
+.cart-container {
+  max-width: 800px;
+  margin: 40px auto;
+}
+
+.cart-item {
+  background: #111;
+  color: #fff;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-item button {
+  background: #e50914;
+  border: none;
+  color: #fff;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
