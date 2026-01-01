@@ -385,7 +385,7 @@ button, .btn {
 .download-card {
   background: #0f0f0f;
   border-radius: 20px;
-  padding: 35px 25px;
+  padding: 30px;
   color: white;
   display: flex;
   flex-direction: column;
@@ -393,44 +393,44 @@ button, .btn {
 }
 
 .download-card img {
-  width: 250px;        /* IMAGE TRÈS GRANDE */
-  max-width: 100%;
+  width: 250px;
   height: auto;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .download-card h3 {
+  margin-bottom: 15px;
   font-size: 20px;
-  margin-bottom: 18px;
 }
 
 .btn-download {
+  display: inline-block;
   padding: 14px 26px;
-  font-size: 15px;
+  background: #e50914;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-.btn-download:hover {
+.btn-download:hover,
+.multi-links a:hover {
   background: #ff1e2d;
 }
 
-/* MULTI LIENS IPTV SMARTERS */
 .multi-links {
   display: flex;
   flex-direction: column;
   gap: 12px;
   width: 100%;
-  margin-top: 15px;
-  position: static;   /* OBLIGATOIRE */
 }
 
 .multi-links a {
-  display: block;
-  width: 100%;
   background: #e50914;
   color: white;
   padding: 12px;
   border-radius: 8px;
-  font-weight: 600;
   text-decoration: none;
-  box-sizing: border-box;
+  font-weight: 600;
+  text-align: center;
 }
