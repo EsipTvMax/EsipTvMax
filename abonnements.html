@@ -74,6 +74,21 @@
   <a href="panier.html" class="btn">🛒 Voir le panier</a>
 </div>
 
-<script src="script.js"></script>
+<!-- ✅ SCRIPT PANIER -->
+<script>
+function addToCart(name, price) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  cart.push({
+    name: name,
+    price: price
+  });
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  alert(name + " ajouté au panier");
+}
+</script>
+
 </body>
 </html>
