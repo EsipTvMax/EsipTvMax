@@ -510,3 +510,56 @@ button, .btn {
 .whatsapp-btn:hover {
   background: #1ebe5d;
 }
+.main-header {
+  background: #000;
+  border-bottom: 1px solid #222;
+  padding: 15px 0;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.logo-main {
+  color: #ffffff;
+}
+
+.logo-accent {
+  color: #e50914;
+}
+
+.main-nav a {
+  color: #ddd;
+  margin-left: 22px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.25s ease;
+}
+
+.main-nav a:hover {
+  color: #e50914;
+}
+
+/* Panier mis en avant */
+.panier-link {
+  background: #e50914;
+  color: #fff !important;
+  padding: 8px 14px;
+  border-radius: 6px;
+  margin-left: 25px;
+}
+
+.panier-link:hover {
+  background: #ff1e27;
+}
