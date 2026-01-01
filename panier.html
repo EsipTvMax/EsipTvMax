@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Panier - EsipTvMax</title>
+  <title>Panier – EsipTvMax</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -26,24 +26,54 @@
   </div>
 </header>
 
-<h2 class="title">🛒 Votre panier</h2>
+<h2 class="title">Votre panier</h2>
 
-<div class="cart-box">
-  <div id="cart"></div>
+<div id="cart-items" class="cart-container"></div>
 
-  <div class="promo-box">
-    <input type="text" id="promo" placeholder="Code promo">
-    <button onclick="applyPromo()">Appliquer</button>
-  </div>
+<h3 id="cart-total" style="text-align:center;"></h3>
 
-  <p class="total">Total : <span id="total">0</span> €</p>
-
-  <div id="paypal-button-container"></div>
+<div style="text-align:center;margin:30px;">
+  <button onclick="clearCart()" class="btn">Vider le panier</button>
 </div>
 
-<!-- ⚠️ REMPLACE TON_CLIENT_ID_ICI -->
-<script src="https://www.paypal.com/sdk/js?client-id=TON_CLIENT_ID_ICI&currency=EUR"></script>
-<script src="script.js"></script>
+<!-- ✅ SCRIPT PANIER -->
+<script>
+const cartItemsDiv = document.getElementById("cart-items");
+const cartTotalDiv = document.getElementById("cart-total");
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+if (cart.length === 0) {
+  cartItemsDiv.innerHTML = "<p style='text-align:center;'>Votre panier est vide.</p>";
+} else {
+  let total = 0;
+
+  cart.forEach((item, index) => {
+    total += item.price;
+
+    cartItemsDiv.innerHTML += `
+      <div class="cart-item">
+        <span>${item.name}</span>
+        <strong>${item.price} €</strong>
+        <button onclick="removeItem(${index})">❌</button>
+      </div>
+    `;
+  });
+
+  cartTotalDiv.innerText = "Total : " + total + " €";
+}
+
+function removeItem(index) {
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  location.reload();
+}
+
+function clearCart() {
+  localStorage.removeItem("cart");
+  location.reload();
+}
+</script>
 
 </body>
 </html>
