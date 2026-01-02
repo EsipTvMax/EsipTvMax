@@ -75,11 +75,14 @@ function renderCart() {
 
     // 🔸 TATINETTE : -60% UNIQUEMENT sur 1 an
     if (
-      promoType === "TATINETTE" &&
-      item.name.toLowerCase().includes("1 an")
-    ) {
-      finalPrice = item.price * 0.40;
-    }
+if (promoType === "TATINETTE") {
+  if (
+    item.name === "Abonnement 1 an – Android" ||
+    item.name === "Abonnement 1 an – Tous supports"
+  ) {
+    finalPrice = item.price * 0.40;
+  }
+}
 
     discountedTotal += finalPrice;
     total += item.price;
