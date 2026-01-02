@@ -9,86 +9,56 @@
 
 <header class="main-header">
   <div class="header-container">
-
-    <div class="logo">
-      <span class="logo-main">Esip</span><span class="logo-accent">TvMax</span>
-    </div>
-
+    <div class="logo"><span class="logo-main">Esip</span><span class="logo-accent">TvMax</span></div>
     <nav class="main-nav">
       <a href="index.html">Accueil</a>
       <a href="abonnements.html">Abonnements</a>
       <a href="telechargement.html">Téléchargement</a>
       <a href="faq.html">FAQ</a>
       <a href="contact.html">Contact</a>
-      <a href="panier.html" class="panier-link">🛒 Panier</a>
+      <a href="panier.html">🛒 Panier</a>
     </nav>
-
   </div>
 </header>
 
-<h2 class="title">Abonnements application Android EsipTvMax</h2>
+<h2 class="title">Abonnements Android</h2>
 
 <div class="products">
   <div class="product">
     <h3>Test 24h</h3>
-    <p class="price">2 €</p>
+    <p>2 €</p>
     <button onclick="addToCart('Test 24h – Android', 2)">Ajouter</button>
   </div>
 
   <div class="product">
     <h3>6 mois</h3>
-    <p class="price">35 €</p>
+    <p>35 €</p>
     <button onclick="addToCart('Abonnement 6 mois – Android', 35)">Ajouter</button>
   </div>
 
   <div class="product">
     <h3>1 an</h3>
-    <p class="price">45 €</p>
+    <p>45 €</p>
     <button onclick="addToCart('Abonnement 1 an – Android', 45)">Ajouter</button>
   </div>
 
   <div class="product">
     <h3>Pack 3 codes (1 an)</h3>
-    <p class="price">120 €</p>
+    <p>120 €</p>
     <button onclick="addToCart('Pack 3 codes – 1 an', 120)">Ajouter</button>
-  </div>
-
-  <div class="product">
-    <h3>Pack 10 codes (1 an)</h3>
-    <p class="price">310 €</p>
-    <button onclick="addToCart('Pack 10 codes – 1 an', 310)">Ajouter</button>
   </div>
 </div>
 
-<h2 class="title">Abonnement autres supports</h2>
+<h2 class="title">Autres supports</h2>
 
 <div class="products">
   <div class="product">
     <h3>1 an – Tous supports</h3>
-    <p class="price">45 €</p>
+    <p>45 €</p>
     <button onclick="addToCart('Abonnement 1 an – Tous supports', 45)">Ajouter</button>
   </div>
 </div>
 
-<div style="text-align:center;margin:40px;">
-  <a href="panier.html" class="btn">🛒 Voir le panier</a>
-</div>
-
-<!-- ✅ SCRIPT PANIER -->
-<script>
-function addToCart(name, price) {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-  cart.push({
-    name: name,
-    price: price
-  });
-
-  localStorage.setItem("cart", JSON.stringify(cart));
-
-  alert(name + " ajouté au panier");
-}
 <script src="script.js"></script>
-
 </body>
 </html>
