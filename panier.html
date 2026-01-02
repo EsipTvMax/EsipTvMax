@@ -32,47 +32,128 @@
 
 <h3 id="cart-total" style="text-align:center;"></h3>
 
+<!-- 🔹 CODE PROMO -->
+<div class="promo-box">
+  <input type="text" id="promoCode" placeholder="Code promo">
+  <button onclick="applyPromo()">Appliquer</button>
+  <p id="promoMessage"></p>
+  <small style="display:block;margin-top:5px;color:#aaa;">
+    Les codes promotionnels sont soumis à conditions.
+  </small>
+</div>
+
 <div style="text-align:center;margin:30px;">
   <button onclick="clearCart()" class="btn">Vider le panier</button>
 </div>
 
-<!-- ✅ SCRIPT PANIER -->
+<!-- ✅ SCRIPT PANIER FINAL -->
 <script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let promoType = null;
+
 const cartItemsDiv = document.getElementById("cart-items");
 const cartTotalDiv = document.getElementById("cart-total");
+const promoMessage = document.getElementById("promoMessage");
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-if (cart.length === 0) {
-  cartItemsDiv.innerHTML = "<p style='text-align:center;'>Votre panier est vide.</p>";
-} else {
+function renderCart() {
+  cartItemsDiv.innerHTML = "";
   let total = 0;
+  let discountedTotal = 0;
+
+  if (cart.length === 0) {
+    cartItemsDiv.innerHTML =
+      "<p style='text-align:center;'>Votre panier est vide.</p>";
+    cartTotalDiv.innerText = "";
+    localStorage.setItem("cartTotal", "0.00");
+    return;
+  }
 
   cart.forEach((item, index) => {
+    let finalPrice = item.price;
+
+    // 🔸 BANO15 : -15% sur tout
+    if (promoType === "BANO15") {
+      finalPrice = item.price * 0.85;
+    }
+
+    // 🔸 TATINETTE : -60% UNIQUEMENT sur 1 an
+    if (
+      promoType === "TATINETTE" &&
+      item.name.toLowerCase().includes("1 an")
+    ) {
+      finalPrice = item.price * 0.40;
+    }
+
+    discountedTotal += finalPrice;
     total += item.price;
 
     cartItemsDiv.innerHTML += `
       <div class="cart-item">
         <span>${item.name}</span>
-        <strong>${item.price} €</strong>
-        <button onclick="removeItem(${index})">❌</button>
+        <div>
+          <strong>${finalPrice.toFixed(2)} €</strong>
+          <button onclick="removeItem(${index})">❌</button>
+        </div>
       </div>
     `;
   });
 
-  cartTotalDiv.innerText = "Total : " + total + " €";
+  if (promoType) {
+    cartTotalDiv.innerText =
+      "Total : " + discountedTotal.toFixed(2) + " € (promo appliquée)";
+    localStorage.setItem("cartTotal", discountedTotal.toFixed(2));
+  } else {
+    cartTotalDiv.innerText = "Total : " + total.toFixed(2) + " €";
+    localStorage.setItem("cartTotal", total.toFixed(2));
+  }
+}
+
+function applyPromo() {
+  const code = document.getElementById("promoCode").value.trim().toUpperCase();
+
+  if (code === "BANO15") {
+    promoType = "BANO15";
+    promoMessage.innerText =
+      "Code BANO15 appliqué : -15% sur tout le panier";
+  } 
+  else if (code === "TATINETTE") {
+    const hasOneYear = cart.some(item =>
+      item.name.toLowerCase().includes("1 an")
+    );
+
+    if (!hasOneYear) {
+      promoType = null;
+      promoMessage.innerText =
+        "Code TATINETTE valable uniquement sur les abonnements 1 an";
+      renderCart();
+      return;
+    }
+
+    promoType = "TATINETTE";
+    promoMessage.innerText =
+      "Code TATINETTE appliqué : -60% sur les abonnements 1 an";
+  } 
+  else {
+    promoType = null;
+    promoMessage.innerText = "Code promo invalide";
+  }
+
+  renderCart();
 }
 
 function removeItem(index) {
   cart.splice(index, 1);
   localStorage.setItem("cart", JSON.stringify(cart));
-  location.reload();
+  renderCart();
 }
 
 function clearCart() {
   localStorage.removeItem("cart");
-  location.reload();
+  promoType = null;
+  renderCart();
 }
+
+renderCart();
 </script>
 
 </body>
