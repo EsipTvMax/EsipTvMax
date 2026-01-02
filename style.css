@@ -670,3 +670,38 @@ button, .btn {
   color: #aaa;
 }
 <script src="script.js"></script>
+/* PROMO BOX */
+.promo-box {
+  max-width: 600px;
+  margin: 40px auto;
+  text-align: left;
+}
+
+.promo-box label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.promo-row {
+  display: flex;
+  gap: 10px;
+}
+
+.promo-row input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  font-size: 16px;
+}
+
+.promo-btn {
+  padding: 12px 20px;
+}
+
+.promo-info {
+  margin-top: 8px;
+  font-size: 13px;
+  opacity: 0.7;
+}
