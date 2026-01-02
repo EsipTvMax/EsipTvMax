@@ -1,30 +1,20 @@
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-let discount = 0;
+function getCart() {
+  return JSON.parse(localStorage.getItem("cart")) || [];
+}
 
-function saveCart() {
+function saveCart(cart) {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
 function addToCart(name, price) {
-  cart.push({ name, price });
-  saveCart();
-  alert("Ajouté au panier");
-}
+  const cart = getCart();
 
-function applyPromo() {
-  const code = document.getElementById("promo").value.toUpperCase();
+  cart.push({
+    name: name,
+    price: price
+  });
 
-  if (code === "BANO10") discount = 0.10;
-  else if (code === "BANO15") discount = 0.15;
-  else {
-    discount = 0;
-    alert("Code invalide");
-  }
+  saveCart(cart);
 
-  displayCart();
-}
-
-function getTotal() {
-  let total = cart.reduce((s, i) => s + i.price, 0);
-  return (total - total * discount).toFixed(2);
+  alert("Produit ajouté au panier 🛒");
 }
