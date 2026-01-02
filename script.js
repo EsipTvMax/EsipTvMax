@@ -144,3 +144,9 @@ function displayCart() {
   AUTO LOAD
 ************************/
 document.addEventListener("DOMContentLoaded", displayCart);
+function updateCartCount() {
+  const count = document.getElementById("cart-count");
+  if (count) count.innerText = cart.length;
+}
+
+document.addEventListener("DOMContentLoaded", updateCartCount);
