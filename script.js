@@ -1,18 +1,23 @@
-/***********************
-  PANIER GLOBAL
+/************************
+  PANIER + PROMOS
 ************************/
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
-let appliedPromo = null;
+let appliedPromo = localStorage.getItem("promo") || null;
 
-/***********************
+/************************
   SAUVEGARDE
 ************************/
 function saveCart() {
   localStorage.setItem("cart", JSON.stringify(cart));
+  if (appliedPromo) {
+    localStorage.setItem("promo", appliedPromo);
+  } else {
+    localStorage.removeItem("promo");
+  }
 }
 
-/***********************
+/************************
   AJOUT AU PANIER
 ************************/
 function addToCart(name, price) {
@@ -21,8 +26,8 @@ function addToCart(name, price) {
   alert("Produit ajouté au panier");
 }
 
-/***********************
-  SUPPRIMER UN ARTICLE
+/************************
+  SUPPRIMER ARTICLE
 ************************/
 function removeItem(index) {
   cart.splice(index, 1);
@@ -30,7 +35,7 @@ function removeItem(index) {
   displayCart();
 }
 
-/***********************
+/************************
   VIDER PANIER
 ************************/
 function clearCart() {
@@ -40,36 +45,41 @@ function clearCart() {
   displayCart();
 }
 
-/***********************
-  CALCUL TOTAL
+/************************
+  CALCUL PRIX AVEC PROMO
+************************/
+function getDiscountedPrice(item) {
+  let price = item.price;
+
+  if (appliedPromo === "BANO15") {
+    price *= 0.85;
+  }
+
+  if (
+    appliedPromo === "TATINETTE" &&
+    (
+      item.name === "Abonnement 1 an – Android" ||
+      item.name === "Abonnement 1 an – Tous supports"
+    )
+  ) {
+    price *= 0.40;
+  }
+
+  return price;
+}
+
+/************************
+  TOTAL PANIER
 ************************/
 function calculateTotal() {
   let total = 0;
-
   cart.forEach(item => {
-    let itemPrice = item.price;
-
-    if (appliedPromo === "BANO15") {
-      itemPrice *= 0.85;
-    }
-
-    if (
-      appliedPromo === "TATINETTE" &&
-      (
-        item.name === "Abonnement 1 an – Android" ||
-        item.name === "Abonnement 1 an – Tous supports"
-      )
-    ) {
-      itemPrice *= 0.40;
-    }
-
-    total += itemPrice;
+    total += getDiscountedPrice(item);
   });
-
   return total.toFixed(2);
 }
 
-/***********************
+/************************
   CODE PROMO
 ************************/
 function applyPromo() {
@@ -78,16 +88,18 @@ function applyPromo() {
 
   if (code === "BANO15" || code === "TATINETTE") {
     appliedPromo = code;
+    saveCart();
     alert("Code promo appliqué");
   } else {
     appliedPromo = null;
+    saveCart();
     alert("Code promo invalide");
   }
 
   displayCart();
 }
 
-/***********************
+/************************
   AFFICHAGE PANIER
 ************************/
 function displayCart() {
@@ -105,19 +117,30 @@ function displayCart() {
   }
 
   cart.forEach((item, index) => {
+    const discounted = getDiscountedPrice(item);
+
     container.innerHTML += `
       <div class="cart-item">
         <span>${item.name}</span>
-        <strong>${item.price.toFixed(2)} €</strong>
+        <div>
+          ${
+            discounted < item.price
+              ? `<del>${item.price.toFixed(2)} €</del> <strong>${discounted.toFixed(2)} €</strong>`
+              : `<strong>${item.price.toFixed(2)} €</strong>`
+          }
+        </div>
         <button onclick="removeItem(${index})">✖</button>
       </div>
     `;
   });
 
-  totalDiv.innerHTML = "Total : " + calculateTotal() + " €";
+  totalDiv.innerHTML = `
+    Total : <strong>${calculateTotal()} €</strong>
+    ${appliedPromo ? `<div class="promo-applied">Code appliqué : ${appliedPromo}</div>` : ""}
+  `;
 }
 
-/***********************
-  AUTO LOAD PANIER
+/************************
+  AUTO LOAD
 ************************/
 document.addEventListener("DOMContentLoaded", displayCart);
