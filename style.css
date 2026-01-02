@@ -705,3 +705,7 @@ button, .btn {
   font-size: 13px;
   opacity: 0.7;
 }
+.cart-cta {
+  text-align: center;
+  margin: 50px 0;
+}
