@@ -20,10 +20,11 @@ function saveCart() {
 /************************
   AJOUT AU PANIER
 ************************/
-function addToCart(name, price) {
-  cart.push({ name, price });
-  saveCart();
-  alert("Produit ajouté au panier");
+function addToCart(name, price, type = "") {
+  cart.push({ name, price, type });
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+  alert("Ajouté au panier");
 }
 
 /************************
