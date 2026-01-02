@@ -28,9 +28,20 @@
 <h3 id="cart-total" class="cart-total"></h3>
 
 <div class="promo-box">
-  <input id="promo-code" type="text" placeholder="Code promo">
-  <button onclick="applyPromo()">Appliquer</button>
-  <p class="promo-info">Les codes promotionnels sont soumis à conditions.</p>
+  <label for="promo-code">Code promotionnel</label>
+
+  <div class="promo-row">
+    <input
+      type="text"
+      id="promo-code"
+      placeholder="Entrez votre code"
+    >
+    <button onclick="applyPromo()" class="btn promo-btn">Appliquer</button>
+  </div>
+
+  <p class="promo-info">
+    Les codes promotionnels sont soumis à conditions.
+  </p>
 </div>
 
 <div class="cart-actions">
