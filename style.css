@@ -709,3 +709,46 @@ button, .btn {
   text-align: center;
   margin: 50px 0;
 }
+/* ===== PANIER HEADER ===== */
+.panier-link {
+  background: #e50914;
+  color: #fff !important;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.panier-link:hover {
+  background: #ff1e27;
+}
+
+/* ===== PROMO CODE ===== */
+.promo-box {
+  max-width: 600px;
+  margin: 40px auto;
+}
+
+.promo-row {
+  display: flex;
+  gap: 10px;
+}
+
+.promo-row input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  font-size: 16px;
+}
+
+.promo-info {
+  font-size: 13px;
+  opacity: 0.7;
+  margin-top: 6px;
+}
+
+/* ===== CTA PANIER ===== */
+.cart-cta {
+  text-align: center;
+  margin: 50px 0;
+}
