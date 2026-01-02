@@ -33,17 +33,14 @@
 <h3 id="cart-total" style="text-align:center;"></h3>
 
 <!-- 🔹 CODE PROMO -->
-<div class="promo-box">
-  <input type="text" id="promoCode" placeholder="Code promo">
-  <button onclick="applyPromo()">Appliquer</button>
-  <p id="promoMessage"></p>
-  <small style="display:block;margin-top:5px;color:#aaa;">
+<div class="promo-wrapper">
+  <div class="promo-box">
+    <input type="text" id="promoCode" placeholder="Code promo">
+    <button onclick="applyPromo()">Appliquer</button>
+  </div>
+  <p id="promoMessage" class="promo-message">
     Les codes promotionnels sont soumis à conditions.
-  </small>
-</div>
-
-<div style="text-align:center;margin:30px;">
-  <button onclick="clearCart()" class="btn">Vider le panier</button>
+  </p>
 </div>
 
 <!-- ✅ SCRIPT PANIER FINAL -->
