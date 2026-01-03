@@ -19,8 +19,8 @@ exports.handler = async () => {
           quantity: 1
         }
       ],
-      success_url: "https://TONSITE.netlify.app/success.html",
-      cancel_url: "https://TONSITE.netlify.app/cancel.html"
+      success_url: "https://esiptvmax.netlify.app/success.html",
+      cancel_url: "https://esiptvmax.netlify.app/cancel.html"
     });
 
     return {
