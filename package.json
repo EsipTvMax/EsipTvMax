@@ -1,8 +1,0 @@
-{
-  "name": "esiptvmax",
-  "version": "1.0.0",
-  "description": "Netlify functions for Stripe checkout",
-  "dependencies": {
-    "stripe": "^14.0.0"
-  }
-}
