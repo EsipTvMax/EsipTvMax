@@ -58,35 +58,5 @@
 
 <script src="script.js"></script>
 
-<script>
-document.getElementById("checkout-btn").addEventListener("click", async () => {
-  try {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    if (cart.length === 0) {
-      alert("Votre panier est vide");
-      return;
-    }
-
-    const response = await fetch("/.netlify/functions/create-checkout", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ items: cart })
-    });
-
-    const data = await response.json();
-
-    if (data.url) {
-      window.location.href = data.url;
-    } else {
-      alert("Erreur lors de la création du paiement");
-    }
-  } catch (e) {
-    alert("Erreur de connexion au paiement");
-  }
-});
-</script>
 </body>
 </html>
