@@ -1,3 +1,42 @@
-<h1>Paiement réussi 🎉</h1>
-<p>Merci pour votre abonnement IPTV.</p>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Paiement réussi – EsipTvMax</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<header class="main-header">
+  <div class="header-container">
+    <div class="logo">
+      <span class="logo-main">Esip</span><span class="logo-accent">TvMax</span>
+    </div>
+  </div>
+</header>
+
+<div style="max-width:600px;margin:80px auto;text-align:center;">
+  <h1 style="color:#4CAF50;">✅ Paiement réussi</h1>
+
+  <p style="font-size:18px;margin:20px 0;">
+    Merci pour votre achat.<br>
+    Votre paiement a bien été confirmé.
+  </p>
+
+  <p style="opacity:0.8;">
+    Vous allez recevoir les informations par email sous peu.
+  </p>
+
+  <a href="index.html" class="btn" style="margin-top:30px;display:inline-block;">
+    Retour à l’accueil
+  </a>
+</div>
+  
+<script>
+  setTimeout(() => {
+    window.location.href = "index.html?payment=success";
+  }, 4000);
+</script>
+  
+</body>
+</html>
