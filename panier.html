@@ -58,19 +58,34 @@
 
 <script src="script.js"></script>
 
-  <script>
+<script>
 document.getElementById("checkout-btn").addEventListener("click", async () => {
   try {
-    const response = await fetch("/.netlify/functions/create-checkout");
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    if (cart.length === 0) {
+      alert("Votre panier est vide");
+      return;
+    }
+
+    const response = await fetch("/.netlify/functions/create-checkout-session", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ items: cart })
+    });
+
     const data = await response.json();
 
     if (data.url) {
       window.location.href = data.url;
     } else {
-      alert("Erreur lors de la création du paiement");
+      alert("Erreur Stripe");
     }
-  } catch (e) {
-    alert("Impossible de contacter Stripe");
+  } catch (err) {
+    alert("Erreur de connexion au paiement");
+    console.error(err);
   }
 });
 </script>
