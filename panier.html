@@ -29,6 +29,12 @@
 
 <h3 id="cart-total" class="cart-total"></h3>
 
+  <div class="cart-actions">
+  <button id="checkout-btn" class="btn btn-primary">
+    Payer maintenant
+  </button>
+</div>
+
 <div class="promo-box">
   <label for="promo-code">Code promotionnel</label>
 
@@ -51,5 +57,22 @@
 </div>
 
 <script src="script.js"></script>
+
+  <script>
+document.getElementById("checkout-btn").addEventListener("click", async () => {
+  try {
+    const response = await fetch("/.netlify/functions/create-checkout");
+    const data = await response.json();
+
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      alert("Erreur lors de la création du paiement");
+    }
+  } catch (e) {
+    alert("Impossible de contacter Stripe");
+  }
+});
+</script>
 </body>
 </html>
