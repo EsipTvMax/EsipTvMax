@@ -752,3 +752,14 @@ button, .btn {
   text-align: center;
   margin: 50px 0;
 }
+.cart-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 30px 0;
+}
+
+.cart-total {
+  text-align: center;
+  margin-top: 20px;
+}
