@@ -68,7 +68,7 @@ document.getElementById("checkout-btn").addEventListener("click", async () => {
       return;
     }
 
-    const response = await fetch("/.netlify/functions/create-checkout-session", {
+    const response = await fetch("/.netlify/functions/create-checkout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -81,11 +81,10 @@ document.getElementById("checkout-btn").addEventListener("click", async () => {
     if (data.url) {
       window.location.href = data.url;
     } else {
-      alert("Erreur Stripe");
+      alert("Erreur lors de la création du paiement");
     }
-  } catch (err) {
+  } catch (e) {
     alert("Erreur de connexion au paiement");
-    console.error(err);
   }
 });
 </script>
