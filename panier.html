@@ -9,7 +9,9 @@
 
 <header class="main-header">
   <div class="header-container">
-    <div class="logo"><span class="logo-main">Esip</span><span class="logo-accent">TvMax</span></div>
+    <div class="logo">
+      <span class="logo-main">Esip</span><span class="logo-accent">TvMax</span>
+    </div>
     <nav class="main-nav">
       <a href="index.html">Accueil</a>
       <a href="abonnements.html">Abonnements</a>
@@ -17,8 +19,8 @@
       <a href="faq.html">FAQ</a>
       <a href="contact.html">Contact</a>
       <a href="panier.html" class="panier-link">
-  🛒 Panier (<span id="cart-count">0</span>)
-</a>
+        🛒 Panier (<span id="cart-count">0</span>)
+      </a>
     </nav>
   </div>
 </header>
@@ -29,21 +31,33 @@
 
 <h3 id="cart-total" class="cart-total"></h3>
 
-  <div class="cart-actions">
-  <button id="checkout-btn" class="btn btn-primary">
-    Payer maintenant
-  </button>
+<!-- ===== PAIEMENT PAYPAL ===== -->
+<div class="cart-actions" style="margin-top:30px; text-align:center;">
+  <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+    
+    <!-- Configuration PayPal -->
+    <input type="hidden" name="cmd" value="_xclick">
+    <input type="hidden" name="business" value="TON_EMAIL_PAYPAL_ICI">
+    <input type="hidden" name="item_name" value="Abonnement EsipTvMax">
+    <input type="hidden" name="currency_code" value="EUR">
+    <input type="hidden" name="amount" id="paypal-amount">
+
+    <!-- Redirections -->
+    <input type="hidden" name="return" value="https://esiptvmax.github.io/EsipTvMax/success.html">
+    <input type="hidden" name="cancel_return" value="https://esiptvmax.github.io/EsipTvMax/panier.html">
+
+    <button type="submit" class="btn btn-primary">
+      💳 Payer avec PayPal
+    </button>
+  </form>
 </div>
 
+<!-- ===== CODE PROMO ===== -->
 <div class="promo-box">
   <label for="promo-code">Code promotionnel</label>
 
   <div class="promo-row">
-    <input
-      type="text"
-      id="promo-code"
-      placeholder="Entrez votre code"
-    >
+    <input type="text" id="promo-code" placeholder="Entrez votre code">
     <button onclick="applyPromo()" class="btn promo-btn">Appliquer</button>
   </div>
 
@@ -58,5 +72,11 @@
 
 <script src="script.js"></script>
 
-</body>
-</html>
+<script>
+  // Envoie le total du panier à PayPal
+  const totalElement = document.getElementById("cart-total");
+  const paypalAmount = document.getElementById("paypal-amount");
+
+  if (totalElement && paypalAmount) {
+    const totalText = totalElement.textContent.replace(/[^\d.,]/g, "").replace(",", ".");
+    paypalAmount.v
