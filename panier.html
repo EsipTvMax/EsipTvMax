@@ -29,24 +29,26 @@
 
 <div id="cart-items" class="cart-container"></div>
 
-<h3 id="cart-total" class="cart-total"></h3>
+<h3 id="cart-total" class="cart-total">Total : 0 €</h3>
 
 <!-- ===== PAIEMENT PAYPAL ===== -->
 <div class="cart-actions" style="margin-top:30px; text-align:center;">
   <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-    
-    <!-- Configuration PayPal -->
+
+    <!-- CONFIG PAYPAL -->
     <input type="hidden" name="cmd" value="_xclick">
     <input type="hidden" name="business" value="esiptvmaxoff@gmail.com">
-    <input type="hidden" name="item_name" value="Abonnement EsipTvMax">
+    <input type="hidden" name="item_name" value="Commande EsipTvMax">
     <input type="hidden" name="currency_code" value="EUR">
+
+    <!-- MONTANT AUTO -->
     <input type="hidden" name="amount" id="paypal-amount">
 
-    <!-- Redirections -->
+    <!-- REDIRECTIONS -->
     <input type="hidden" name="return" value="https://esiptvmax.github.io/EsipTvMax/success.html">
     <input type="hidden" name="cancel_return" value="https://esiptvmax.github.io/EsipTvMax/panier.html">
 
-    <button type="submit" class="btn btn-primary">
+    <button type="submit" class="btn" style="background:#ffc439;color:#111;font-weight:bold;">
       💳 Payer avec PayPal
     </button>
   </form>
@@ -73,10 +75,20 @@
 <script src="script.js"></script>
 
 <script>
-  // Envoie le total du panier à PayPal
-  const totalElement = document.getElementById("cart-total");
-  const paypalAmount = document.getElementById("paypal-amount");
+/* ================================
+   ENVOI DU TOTAL À PAYPAL
+================================ */
 
-  if (totalElement && paypalAmount) {
-    const totalText = totalElement.textContent.replace(/[^\d.,]/g, "").replace(",", ".");
-    paypalAmount.v
+function getCartTotal() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  return cart.reduce((total, item) => total + item.price, 0).toFixed(2);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const total = getCartTotal();
+  document.getElementById("paypal-amount").value = total;
+});
+</script>
+
+</body>
+</html>
