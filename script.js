@@ -22,7 +22,7 @@ function saveCart() {
 ************************/
 function addToCart(name, price, type = "") {
   cart.push({ name, price, type });
-  localStorage.setItem("cart", JSON.stringify(cart));
+  saveCart();
   updateCartCount();
   alert("Ajouté au panier");
 }
@@ -47,7 +47,7 @@ function clearCart() {
 }
 
 /************************
-  CALCUL PRIX AVEC PROMO
+  PRIX AVEC PROMO
 ************************/
 function getDiscountedPrice(item) {
   let price = item.price;
@@ -81,22 +81,29 @@ function calculateTotal() {
 }
 
 /************************
+  PAYPAL SYNC
+************************/
+function updatePaypalAmount() {
+  const paypalAmount = document.getElementById("paypal-amount");
+  if (!paypalAmount) return;
+  paypalAmount.value = calculateTotal();
+}
+
+/************************
   CODE PROMO
 ************************/
 function applyPromo() {
-  const input = document.getElementById("promo-code");
-  const code = input.value.trim().toUpperCase();
+  const code = document.getElementById("promo-code").value.trim().toUpperCase();
 
   if (code === "BANO15" || code === "TATINETTE") {
     appliedPromo = code;
-    saveCart();
     alert("Code promo appliqué");
   } else {
     appliedPromo = null;
-    saveCart();
     alert("Code promo invalide");
   }
 
+  saveCart();
   displayCart();
 }
 
@@ -113,7 +120,8 @@ function displayCart() {
 
   if (cart.length === 0) {
     container.innerHTML = "<p style='text-align:center;'>Votre panier est vide.</p>";
-    totalDiv.innerHTML = "";
+    totalDiv.innerHTML = "Total : 0 €";
+    updatePaypalAmount();
     return;
   }
 
@@ -139,15 +147,22 @@ function displayCart() {
     Total : <strong>${calculateTotal()} €</strong>
     ${appliedPromo ? `<div class="promo-applied">Code appliqué : ${appliedPromo}</div>` : ""}
   `;
+
+  updatePaypalAmount();
 }
 
 /************************
   AUTO LOAD
 ************************/
-document.addEventListener("DOMContentLoaded", displayCart);
+document.addEventListener("DOMContentLoaded", () => {
+  displayCart();
+  updateCartCount();
+});
+
+/************************
+  COMPTEUR PANIER
+************************/
 function updateCartCount() {
   const count = document.getElementById("cart-count");
   if (count) count.innerText = cart.length;
 }
-
-document.addEventListener("DOMContentLoaded", updateCartCount);
