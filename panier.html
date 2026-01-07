@@ -31,20 +31,18 @@
 
 <h3 id="cart-total" class="cart-total">Total : 0 €</h3>
 
-<!-- ===== PAIEMENT PAYPAL ===== -->
+<!-- ===== PAYPAL ===== -->
 <div class="cart-actions" style="margin-top:30px; text-align:center;">
   <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
 
-    <!-- CONFIG PAYPAL -->
     <input type="hidden" name="cmd" value="_xclick">
     <input type="hidden" name="business" value="sb-j43ukj48353422@business.example.com">
     <input type="hidden" name="item_name" value="Commande EsipTvMax">
     <input type="hidden" name="currency_code" value="EUR">
 
-    <!-- MONTANT AUTO -->
+    <!-- MONTANT DYNAMIQUE -->
     <input type="hidden" name="amount" id="paypal-amount">
 
-    <!-- REDIRECTIONS -->
     <input type="hidden" name="return" value="https://esiptvmax.github.io/EsipTvMax/success.html">
     <input type="hidden" name="cancel_return" value="https://esiptvmax.github.io/EsipTvMax/panier.html">
 
@@ -73,49 +71,6 @@
 </div>
 
 <script src="script.js"></script>
-
-<script>
-/* ================================
-   ENVOI DU TOTAL À PAYPAL
-================================ */
-
-function getCartTotal() {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  return cart.reduce((total, item) => total + item.price, 0).toFixed(2);
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  const total = getCartTotal();
-  document.getElementById("paypal-amount").value = total;
-});
-</script>
-
-  <script>
-function updatePaypalAmount() {
-  const totalElement = document.getElementById("cart-total");
-  const paypalAmount = document.getElementById("paypal-amount");
-
-  if (!totalElement || !paypalAmount) return;
-
-  // Exemple : "Total : 45,00 €"
-  const totalText = totalElement.textContent
-    .replace(/[^\d,]/g, "")
-    .replace(",", ".");
-
-  paypalAmount.value = totalText;
-}
-
-// Mise à jour au chargement
-document.addEventListener("DOMContentLoaded", updatePaypalAmount);
-
-// Mise à jour après code promo
-function applyPromo() {
-  // ⚠️ TON CODE EXISTANT RESTE
-  // (ne supprime rien)
-
-  setTimeout(updatePaypalAmount, 100);
-}
-</script>
 
 </body>
 </html>
