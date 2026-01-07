@@ -90,5 +90,32 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
+  <script>
+function updatePaypalAmount() {
+  const totalElement = document.getElementById("cart-total");
+  const paypalAmount = document.getElementById("paypal-amount");
+
+  if (!totalElement || !paypalAmount) return;
+
+  // Exemple : "Total : 45,00 €"
+  const totalText = totalElement.textContent
+    .replace(/[^\d,]/g, "")
+    .replace(",", ".");
+
+  paypalAmount.value = totalText;
+}
+
+// Mise à jour au chargement
+document.addEventListener("DOMContentLoaded", updatePaypalAmount);
+
+// Mise à jour après code promo
+function applyPromo() {
+  // ⚠️ TON CODE EXISTANT RESTE
+  // (ne supprime rien)
+
+  setTimeout(updatePaypalAmount, 100);
+}
+</script>
+
 </body>
 </html>
